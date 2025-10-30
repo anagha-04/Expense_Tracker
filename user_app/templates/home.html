@@ -104,7 +104,7 @@
                 {% endif %}
               </td>
               <td>
-                <a href="" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'expense_update' t.id%}" class="btn btn-sm btn-warning">Edit</a>
                 <a href="{% url 'expense_delete' t.id %}" class="btn btn-sm btn-danger">Delete</a>
               </td>
             </tr>

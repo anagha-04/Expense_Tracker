@@ -26,7 +26,7 @@ urlpatterns = [
     path('logout/',LogoutView.as_view(),name ='logout'),
     path('add_expense/',Add_Expense_View.as_view(),name='expense_add'),
     path('list/',ExpenseList.as_view(),name="expense_list"),
-    path('update/<int:pk>',ExpenseUpdate.as_view()),
+    path('update/<int:pk>',ExpenseUpdate.as_view(),name='expense_update'),
     path("",BaseView.as_view(),name="home"),
     path('delete/<int:pk>',ExpenseDelete.as_view(),name='expense_delete'),
 

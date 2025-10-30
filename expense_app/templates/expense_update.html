@@ -7,8 +7,13 @@
 </head>
 <body>
     <h1>EXPENSE UPDATE</h1>
+    <form action="" method="post">
+        {% csrf_token %}
 
-    {{form}}
-    <button type="submit">UPDATE</button>
+         {{form}}
+       <button type="submit">UPDATE</button>
+    </form>
+
+
 </body>
 </html>
