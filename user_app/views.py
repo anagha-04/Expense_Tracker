@@ -94,9 +94,17 @@ class BaseView(View):
 
     def get(self,request):
 
-        expenses = Expense.objects.filter(user = request.user)
+        expenses = Expense.objects.filter(user = request.user) #object
 
-        return render(request,"home.html",{"expenses":expenses})
+        #collection of objects (object1,object2,object3)
+
+        total_expense = 0
+
+        for i in expenses:
+
+            total_expense+= i.amount
+
+        return render(request,"home.html",{"expenses":expenses,"total_expense":total_expense})
     
 
 

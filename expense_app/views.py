@@ -11,6 +11,8 @@ from django.shortcuts import get_object_or_404
 
 from django.urls import reverse_lazy
 
+from django.db.models import Q
+
 
 class Add_Expense_View(View):
 
@@ -81,6 +83,25 @@ class ExpenseDelete(View):
         expense.delete()
 
         return redirect("home")
+    
+
+class ExpenseSearchView(View):
+
+    template_name = "expense_search.html"
+    
+    def get(self,request):
+
+        query = request.GET.get("q") #food
+
+        #filtering all expense of the logined user
+
+        expenses = Expense.objects.filter(user = request.user)
+
+        if query:
+
+             expenses = expenses.filter(Q(title__icontains = query) | Q(category__icontains = query))
+
+        return render (request,self.template_name,{"expenses": expenses})
         
 
 

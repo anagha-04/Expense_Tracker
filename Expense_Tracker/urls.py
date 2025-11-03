@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from user_app.views import RegisterView,LoginView,LogoutView,BaseView
-from expense_app.views import Add_Expense_View,ExpenseList,ExpenseUpdate,ExpenseDelete
+from user_app.views import *
+from expense_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('update/<int:pk>',ExpenseUpdate.as_view(),name='expense_update'),
     path("",BaseView.as_view(),name="home"),
     path('delete/<int:pk>',ExpenseDelete.as_view(),name='expense_delete'),
+    path('search/',ExpenseSearchView.as_view(), name='search'),
 
     
 ]
